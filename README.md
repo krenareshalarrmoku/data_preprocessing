@@ -1,6 +1,6 @@
-## Pergaditja dhe vizualizimi i te dhenave per datasetin e shpenzimeve te studenteve
+# Pergaditja dhe vizualizimi i te dhenave per datasetin e shpenzimeve te studenteve
 
-## Faza 1
+# Faza 1
 
 Fillimisht fillojme me mbledhjen e te dhanave, ne rastin tone i marrim nga kaggle permes API call the i ruajme ne /data/student_spending.csv
 
@@ -16,10 +16,10 @@ Head
 
 [5 rows x 18 columns]
 
-# Detektimi i tipit te te dhanve
+## Detektimi i tipit te te dhanve
 RangeIndex: 1000 entries, 0 to 999
 Data columns (total 18 columns):
- #   Column                    Non-Null Count  Dtype 
+ ~   Column                    Non-Null Count  Dtype 
 ---  ------                    --------------  ----- 
  0   Unnamed: 0                1000 non-null   int64 
  1   age                       1000 non-null   int64 
@@ -63,7 +63,7 @@ miscellaneous    1000.0   108.910   52.412221  ...   110.0   153.00   200.0
 
 [14 rows x 8 columns]
 
-# Identifikimi dhe trajtimi i vlerave Null, ne rastin tone nuk kemi asnje te tille por megjithate kodi per largimin e tyre eshte prezent
+## Identifikimi dhe trajtimi i vlerave Null, ne rastin tone nuk kemi asnje te tille por megjithate kodi per largimin e tyre eshte prezent
 Unnamed: 0                  0
 age                         0
 gender                      0
@@ -85,7 +85,7 @@ preferred_payment_method    0
 dtype: int64
 
 
-# Reduktimi i kolones se pare te datasetit pasi nuk ofron ndonje info me kuptim
+## Reduktimi i kolones se pare te datasetit pasi nuk ofron ndonje info me kuptim
    age      gender  ... miscellaneous preferred_payment_method
 0   19  Non-binary  ...            72        Credit/Debit Card
 1   24      Female  ...            68        Credit/Debit Card
@@ -93,7 +93,7 @@ dtype: int64
 [2 rows x 17 columns]
 
 
-# Definimi i tipit te te dhenave me ndihmen e python
+## Definimi i tipit te te dhenave me ndihmen e python
 age                          int64
 gender                      object
 year_in_school              object
@@ -114,14 +114,14 @@ preferred_payment_method    object
 dtype: object
 
 
-# Categorical columns:
+## Categorical columns:
 gender
 year_in_school
 major
 preferred_payment_method
 
 
-# Numerical columns:
+## Numerical columns:
 age
 monthly_income
 financial_aid
@@ -137,7 +137,7 @@ health_wellness
 miscellaneous
 
 
-# Statistika pershkruese per atributet numerike:
+## Statistika pershkruese per atributet numerike:
                age  monthly_income  ...  health_wellness  miscellaneous
 count  1000.000000     1000.000000  ...      1000.000000    1000.000000
 mean     21.675000     1020.650000  ...       114.310000     108.910000
@@ -151,7 +151,7 @@ max      25.000000     1500.000000  ...       200.000000     200.000000
 [8 rows x 13 columns]
 
 
-# Statistika pershkruese per atributet kategorike:
+## Statistika pershkruese per atributet kategorike:
        gender year_in_school    major preferred_payment_method
 count    1000           1000     1000                     1000
 unique      3              4        5                        3
@@ -159,7 +159,7 @@ top      Male         Senior  Biology       Mobile Payment App
 freq      356            254      228                      350
 
 
-# Encoding Categorical Variables
+## Encoding Categorical Variables
    age  gender  ...  miscellaneous  preferred_payment_method
 0   19       2  ...             72                         1
 1   24       0  ...             68                         1
@@ -169,7 +169,7 @@ freq      356            254      228                      350
 
 [5 rows x 17 columns]
 
-# Kolonat numerike te perdorura per reduktimin e dimensionit:
+## Kolonat numerike te perdorura per reduktimin e dimensionit:
       age  monthly_income  ...  health_wellness  miscellaneous
 0     19             958  ...              127             72
 1     24            1006  ...              129             68
@@ -186,7 +186,7 @@ freq      356            254      228                      350
 [1000 rows x 13 columns]
 
 
-Te dhenat me dimensione te reduktura ne 3.              
+## Te dhenat me dimensione te reduktura ne 3.              
 PC1         PC2         PC3
 0   -1417.793598  171.018080 -179.194464
 1    -389.033443 -165.042651  331.342824
@@ -202,7 +202,7 @@ PC1         PC2         PC3
 
 [1000 rows x 3 columns]
 
-# Binarizimi i kolones financial_aid dhe diskretizimi i kolones monthly_income:
+## Binarizimi i kolones financial_aid dhe diskretizimi i kolones monthly_income:
    age  gender  year_in_school  ...  total_expenses  has_financial_aid  income_group
 0   19       2               0  ...            7707                  1           1.0
 1   24       0               1  ...            6756                  1           1.0
@@ -212,11 +212,11 @@ PC1         PC2         PC3
 
 [5 rows x 20 columns]
 
-## Faza 2
+# Faza 2
 
-Detektimi i perjashtuesve:
+ Detektimi i perjashtuesve:
 
-# Reshtat qe permbajne perjashtues: 
+## Reshtat qe permbajne perjashtues: 
 Index([  0,   5,   6,   8,   9,  11,  13,  14,  15,  16,
        ...
        990, 991, 992, 993, 994, 995, 996, 997, 998, 999],
@@ -224,20 +224,23 @@ Index([  0,   5,   6,   8,   9,  11,  13,  14,  15,  16,
 
 dhe paraqitja e cooralation matrix e bashkangjitur ne /visual/1_phase2.png
 
-## Faza 3
+# Faza 3
 
 Visualizimi i te dhenave ne baze te tipit, vizualizimi statik dhe interaktiv si dhe vizualizimi multi dimensional
 
-# Visualization Based on Data Type
-# Numerical data visualization (histogram) 1_phase2.png
+## Visualization Based on Data Type
 
-# Categorical data visualization (bar plot) 2_phase3.png
+## Numerical data visualization
+(histogram) 1_phase2.png
 
-# Static Visualization
-# Box plot (static) 3_phase3.png
+## Categorical data visualization 
+(bar plot) 2_phase3.png
 
-# Interactive Visualization
-# Scatter plot (interactive) 4_phase3.png
+## Static Visualization
+Box plot (static) 3_phase3.png
+
+## Interactive Visualization
+Scatter plot (interactive) 4_phase3.png
 
 # Multidimensional Data Visualization
-# Pair plot (multidimensional) 5_phase3.png
+Pair plot (multidimensional) 5_phase3.png

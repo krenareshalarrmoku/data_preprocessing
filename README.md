@@ -3,7 +3,6 @@
 # Faza 1
 
 Fillimisht fillojme me mbledhjen e te dhanave, ne rastin tone i marrim nga kaggle permes API call the i ruajme ne /data/student_spending.csv
-
 Vazhdojme me analizimin e kualitetit te te dhenave
 
 Head
